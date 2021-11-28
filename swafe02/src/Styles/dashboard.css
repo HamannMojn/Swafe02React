@@ -14,3 +14,7 @@ ul{
     padding: 2px 16px;
 }
 
+.gridcontainer{
+    display: grid;
+}
+
