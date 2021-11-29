@@ -3,7 +3,7 @@ import { User } from '../Models/User';
 import authService from '../services/auth.service';
 import dataService from '../services/data.service';
 import { WorkoutProgram } from '../Models/WorkoutProgram';
-import '../Styles/dashboard.css';
+import styles from '../Styles/dashboard.module.scss';
 
 
 function Dashboard() {
@@ -24,12 +24,12 @@ function Dashboard() {
 
     return (
         <div className="list row">
-            <h3>Hi {user?.firstName}!</h3>
-            <div className="col-md-6">
+            <h1>Hi {user?.firstName}!</h1>
+            <div>
                 <h4>WorkoutPrograms</h4>
                 <ul>
                     {programs && programs.map((program) => (
-                        <li className="card">
+                        <li className={styles.card}>
                             {program.workoutProgramId} {program.name}
                             <p>
                                 {program.description}
@@ -38,7 +38,6 @@ function Dashboard() {
                     ))}
                 </ul>
             </div>
-            
         </div>
     )
 }
