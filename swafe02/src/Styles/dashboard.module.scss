@@ -1,0 +1,29 @@
+ul{
+    text-decoration: none;
+}
+.card {
+    box-shadow: 0 4px 8px 0 #d3d36741;
+    transition: 0.3s;
+    border-radius: 5px;
+    display: inline-block;
+    margin: 20px;
+    padding: 10px;
+    background-color: #A69054;
+    width: 20%;
+}
+
+h4{
+    color: #FCB98A;
+    font-size: 1.1em;
+    text-shadow: 2px 2px 8px #D3D367;
+}
+
+h1{
+    color: #FCB98A;
+    font-size: 1.5em;
+    text-shadow: 2px 2px 8px #D3D367;
+}
+
+.card:hover {
+    box-shadow: 0 8px 16px 0 #d3d367d8;
+  }

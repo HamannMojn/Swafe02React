@@ -3,7 +3,7 @@ import { User } from '../Models/User';
 import authService from '../services/auth.service';
 import dataService from '../services/data.service';
 import { WorkoutProgram } from '../Models/WorkoutProgram';
-import '../Styles/dashboard.css';
+import styles from '../Styles/dashboard.module.scss';
 import WorkoutProgramComponent from './WorkoutProgram';
 import CreateUser from './CreateUser';
 
@@ -64,7 +64,6 @@ function Dashboard() {
                 </div>
                 )}
             </div>
-            
         </div>
     )
 }
