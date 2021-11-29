@@ -1,5 +1,7 @@
 import axios from "axios";
 import { User } from "../Models/User";
+import jwt from 'jwt-decode';
+import { userInfo } from "../Models/userInfo";
 
 const URL = "https://afe2021fitness.azurewebsites.net/api/Users/";
 
@@ -10,11 +12,15 @@ class AuthService {
             email, password
         })
         .then((response) => {
-            if(response.data.jwt) {
-                sessionStorage.setItem("user", JSON.stringify(response.data))
+            const token = response.data.jwt;
+            if(token) {
+                sessionStorage.setItem("user", token);
+                const info = jwt<string>(token);
+                sessionStorage.setItem("info", JSON.stringify(info));
             }
+
             
-            return response.data
+            return token
         });
     }
 
@@ -26,12 +32,9 @@ class AuthService {
         return axios.post(URL, user);
     }
 
-    getCurrentUser() {
-        const user = sessionStorage.getItem("user");
-        if(user){
-            return JSON.parse(user)
-        }
-        return null;
+    getCurrentUser(){
+        const info = <userInfo>JSON.parse(sessionStorage.getItem("info")!);
+        return info;
     }
 }
 export default new AuthService();
