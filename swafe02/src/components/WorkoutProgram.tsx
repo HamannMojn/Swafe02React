@@ -8,27 +8,13 @@ import jwtDecode from 'jwt-decode';
 function WorkoutProgramComponent() {
     const [user, setUser] = useState<User>();
     const [programs, setPrograms] = useState<Array<WorkoutProgram>>([]);
+
     useEffect(() => {
         getData();
-    }, []);
+    }, [programs]);
 
-    const getUserRole = () => {
-        const user = authService.getCurrentUser();
-
-        switch (user.role) {
-            case "Client":
-                console.log(user.role);
-                break;
-            
-                case "PersonalTrainer":
-                console.log(user.role);
-                break;
-            default:
-                break;
-        }
-    }
-    const getData = () => {
-        dataService.getWorkoutPrograms()
+    const getData = async () => {
+        await dataService.getWorkoutPrograms()
         .then((response: any) => {
             setPrograms(response.data);
             console.log(response.data);
@@ -39,7 +25,7 @@ function WorkoutProgramComponent() {
         <div>
             <h4>WorkoutPrograms</h4>
                 <ul>
-                    {programs && programs.map((program) => (
+                    {programs.map((program) => (
                         <li className="card">
                             {program.workoutProgramId} {program.name}
                             <p>

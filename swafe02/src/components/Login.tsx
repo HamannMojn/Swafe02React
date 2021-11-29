@@ -2,7 +2,6 @@ import { useForm } from 'react-hook-form';
 import { useNavigate } from "react-router-dom";
 import authService from '../services/auth.service';
 
-
 export default function Login() {
 
     const {register, handleSubmit} = useForm();

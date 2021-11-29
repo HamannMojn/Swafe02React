@@ -1,9 +1,9 @@
 export interface User{
-    UserId: number;
+    UserId?: number | null;
     firstName: string;
     lastName: string;
     email: string;
     password: string;
-    personalTrainerId: number;
+    personalTrainerId?: number | null;
     accountType: string;
 }
