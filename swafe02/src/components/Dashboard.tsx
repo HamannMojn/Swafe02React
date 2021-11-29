@@ -1,9 +1,6 @@
 import React, {useEffect, useState} from 'react'
-import { User } from '../Models/User';
 import authService from '../services/auth.service';
-import dataService from '../services/data.service';
-import { WorkoutProgram } from '../Models/WorkoutProgram';
-import styles from '../Styles/dashboard.module.scss';
+
 import WorkoutProgramComponent from './WorkoutProgram';
 import CreateUser from './CreateUser';
 
@@ -16,13 +13,16 @@ function Dashboard() {
     }
 
     const [state, setState] = useState(initialState);
-    const [user, setUser] = useState(() => authService.getCurrentUser());
+    const [user, setUser] = useState({});
 
     useEffect(() => {
-        setUser(()=> authService.getCurrentUser());
+        if(user){
+            setUser(()=> authService.getCurrentUser().Role);
+        }
+        
         console.log(user)
         if(user){
-            switch (user.Role) {
+            switch (user) {
                 case "Client":
                     setState({isManager: false, isPersonalTrainer: false, isClient: true});
                     break;

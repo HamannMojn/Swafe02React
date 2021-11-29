@@ -5,7 +5,7 @@ import authService from '../services/auth.service';
 
 
 function CreateUser() {
-    const {register, handleSubmit} = useForm();
+    const {register, handleSubmit, reset} = useForm();
     const [isPt, setIsPt] = useState(false);
     useEffect(() => {
         const user = authService.getCurrentUser();
@@ -14,17 +14,18 @@ function CreateUser() {
         }
     }, []);
 
-    const onCreate = async (data: {firstname: string,
-        lastname: string,
+    const onCreate = async (data: {firstName: string,
+        lastName: string,
         email: string,
         password: string,
         ptId : number | null}) => {
         dataService.createUser(
-            data.firstname,
-            data.lastname,
+            data.firstName,
+            data.lastName,
             data.email,
             data.password,
             data.ptId);
+            reset();
     }
 
     return (
@@ -59,8 +60,8 @@ function CreateUser() {
                   <div>
                       <label htmlFor="ptId">Personal Trainer Id</label>
                       <input
-                      id="ptid"
-                      {...register("ptid")}/>
+                      id="ptId"
+                      {...register("ptId")}/>
                   </div>
               )}
               <input type="submit"/>
