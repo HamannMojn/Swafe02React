@@ -34,6 +34,15 @@ class DataService {
             personalTrainerId: ptId,
             accountType: type
         }
+        console.log(newUser)
+
+        return axios.post(URL+"users", newUser, {headers: authHeader()}).then((response) => {
+            console.log(response.data);
+        }).catch(err => { if(err.request){ console.log(err.request) } if(err.response){ console.log(err.response)}})
+    }
+
+    CreateWorkout(){
+        
     }
 }
 export default new DataService();
