@@ -11,6 +11,9 @@ class DataService {
     async getWorkoutPrograms() {
         return await axios.get(URL + "workoutprograms", {headers: authHeader()});
     }
+    async getExercises() {
+        return await axios.get(URL + "exercises", {headers: authHeader()});
+    }
 
     async createUser(
         firstname: string,
@@ -42,7 +45,7 @@ class DataService {
         }).catch(err => { if(err.request){ console.log(err.request) } if(err.response){ console.log(err.response)}})
     }
 
-    CreateWorkout(name: string, description: string, exercises: exercise[], personalTrainerId: number, clientId: any){
+    CreateWorkout(name: string, description: string, exercises: exercise[], personalTrainerId: string, clientId: any){
         const newWorkout = <WorkoutProgram>{
             name: name,
             description: description,
@@ -51,10 +54,13 @@ class DataService {
             clientId: clientId
         }
 
-        console.log(newWorkout);
-        // return axios.post(URL+"WorkoutPrograms", newWorkout, {headers: authHeader()}).then((response) => {
-        //     console.log(response.data);
-        // }).catch(err => { if(err.request){ console.log(err.request) } if(err.response){ console.log(err.response)}})
+        return axios.post(URL+"WorkoutPrograms", newWorkout, {headers: authHeader()}).then((response) => {
+            console.log(response.data);
+        }).catch(err => { if(err.request){ console.log(err.request) } if(err.response){ console.log(err.response)}})
+    }
+
+    async getPtClients() {
+        return await axios.get(URL + "Users/Clients", {headers: authHeader()})
     }
 
     CreateExercise(name: string, description: string, sets: number, repetitions: number, time: string){
@@ -66,14 +72,6 @@ class DataService {
             time: time,
         }
         console.log(newExercise);
-    }
-
-    async getExercises() {
-        return await axios.get(URL + "exercises", {headers: authHeader()});
-    }
-
-    async getPtClients() {
-        return await axios.get(URL + "Users/Clients", {headers: authHeader()})
     }
 }
 export default new DataService();

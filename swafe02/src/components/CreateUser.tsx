@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useForm } from 'react-hook-form';
 import dataService from '../services/data.service';
 import authService from '../services/auth.service';
+import styles from '../Styles/createUser.module.scss';
 
 
 function CreateUser() {
@@ -29,42 +30,49 @@ function CreateUser() {
     }
 
     return (
-        <div className="react-hooks-form">
+        <div className="react-hooks-form" style={{float: 'left', marginLeft:'15%'}}>
+            <h2>
+                Create user 
+            </h2>
           <form onSubmit={handleSubmit(onCreate)}>
               <div>
-                  <label htmlFor="firstName">First Name</label>
                   <input
+                  className={styles.inputField}
                     id="firstName"
+                    placeholder='First name'
                     {...register("firstName", {required: "required",})} type="firstName"/>
               </div>
               <div>
-                  <label htmlFor="lastName">Last Name</label>
                   <input
-                    id="lastName"
+                  className={styles.inputField}
+                    id="lastName" 
+                    placeholder='Last name'
                     {...register("lastName", {required: "required",})} type="lastName"/>
               </div>
               <div>
-                  <label htmlFor="email">E-mail</label>
-                  <input
+                  <input className={styles.inputField}
                     id="email"
+                    placeholder='E-mail'
                     {...register("email", {required: "required",})} type="email"/>
               </div>
               <div>
-                  <label htmlFor="password">Password</label>
-                  <input 
+                  <input className={styles.password}
                   id="password" 
+                  placeholder='Password'
                   {...register("password", 
                   {required: "required",})} type="password"/>
               </div>
               {isPt && (
                   <div>
-                      <label htmlFor="ptId">Personal Trainer Id</label>
                       <input
+                      className={styles.inputField}
+                      placeholder='Personal trainer ID'
                       id="ptId"
                       {...register("ptId")}/>
                   </div>
               )}
-              <input type="submit"/>
+              <input
+              className={styles.standardButton} type="submit"/>
           </form>
       </div>
     )

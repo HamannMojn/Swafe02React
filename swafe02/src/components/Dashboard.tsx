@@ -63,8 +63,9 @@ function Dashboard() {
                 {state.isPersonalTrainer && (
                     <div>
                         <CreateUser/>
-                        <WorkoutProgramComponent/>
                         <CreateWorkoutProgram/>
+                        <WorkoutProgramComponent/>
+                        
                 </div>
                 )}
             </div>

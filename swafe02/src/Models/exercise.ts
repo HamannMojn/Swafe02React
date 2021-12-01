@@ -5,6 +5,5 @@ export interface exercise{
     sets: number;
     repetitions: number;
     time: string;
-    workoutProgramId: number;
     personalTrainerId: number;
 }

@@ -4,6 +4,6 @@ export interface WorkoutProgram{
     name: string;
     description: string;
     exercises: exercise[];
-    personalTrainerId: number;
+    personalTrainerId: string;
     clientId: number;
 }
