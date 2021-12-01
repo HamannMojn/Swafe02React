@@ -3,12 +3,7 @@ import { User } from '../Models/User';
 import authService from '../services/auth.service';
 import dataService from '../services/data.service';
 import { WorkoutProgram } from '../Models/WorkoutProgram';
-<<<<<<< HEAD
-import styles from '../Styles/dashboard.module.scss';
-=======
-import '../Styles/dashboard.css';
 import WorkoutProgramComponent from './WorkoutProgram';
->>>>>>> dc84ad1b399292a78b53716215bfba1cf030aad5
 
 
 function Dashboard() {
