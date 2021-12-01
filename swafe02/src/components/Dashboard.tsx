@@ -3,6 +3,7 @@ import authService from '../services/auth.service';
 
 import WorkoutProgramComponent from './WorkoutProgram';
 import CreateUser from './CreateUser';
+import CreateWorkoutProgram from './CreateWorkoutProgram';
 
 function Dashboard() {
 
@@ -18,6 +19,7 @@ function Dashboard() {
     useEffect(() => {
         if(user){
             setUser(()=> authService.getCurrentUser().Role);
+            console.log(user);
         }
         
         console.log(user)
@@ -60,7 +62,7 @@ function Dashboard() {
                     <div>
                         <CreateUser/>
                         <WorkoutProgramComponent/>
-                    {/* <CreateWorkoutProgram/> */}
+                        <CreateWorkoutProgram/>
                 </div>
                 )}
             </div>
