@@ -40,9 +40,7 @@ function CreateWorkoutProgram(this: any) {
                 console.log(response.data);
             })
         }
-        // function handleChangeExercise(event: any) {
-        //     console.log(event.target.value);
-        // }
+
             function handleChangeExercise(event: any) {
                 setExercises(oldArray => [...oldArray, importedExercises[event.target.value]]);
                 console.log(importedExercises[event.target.value])
@@ -100,19 +98,8 @@ function CreateWorkoutProgram(this: any) {
                         <div>
                             <button className={styles.standardButton} onClick={() => setExercises([])}>Reset</button>
                         </div>
-                        <input className={styles.standardButton} type="submit" onClick={() => setExercises([])} />
+                        <input className={styles.standardButton} type="submit" />
                     </form>
-                    <div>
-                        <label htmlFor="ClientId">ClientId</label>
-                        <select onChange={(event) => handleChangeClient(event)}>
-                            {importedClients.map((Client) => (
-                                <option value={Client.userId}>{Client.firstName} {Client.lastName}</option>
-                            ))}
-                        </select>
-                    </div>
-                    <div>
-                        <button onClick={() => setExercises([])}>Reset</button>
-                    </div>
                 </div>
             )
         }

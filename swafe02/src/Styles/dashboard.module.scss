@@ -1,6 +1,7 @@
-ul{
+ul {
     text-decoration: none;
 }
+
 .card {
     box-shadow: 0 4px 8px 0 #d3d36741;
     transition: 0.3s;
@@ -10,16 +11,15 @@ ul{
     padding: 10px;
     background-color: #A69054;
     width: 20%;
-    cursor: pointer;
 }
 
-h4{
+h4 {
     color: #FCB98A;
     font-size: 1.1em;
     text-shadow: 2px 2px 8px #D3D367;
 }
 
-h1{
+h1 {
     color: #FCB98A;
     font-size: 1.5em;
     text-shadow: 2px 2px 8px #D3D367;
@@ -27,4 +27,16 @@ h1{
 
 .card:hover {
     box-shadow: 0 8px 16px 0 #d3d367d8;
-  }
+}
+
+.standardButton {
+    background: #2A3B47;
+    width: 125px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-top: 10px;
+    color: white;
+    border-radius: 4px;
+    border: #2A3B47 1px solid;
+    cursor: pointer;
+}

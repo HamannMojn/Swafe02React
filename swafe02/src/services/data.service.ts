@@ -63,15 +63,19 @@ class DataService {
         return await axios.get(URL + "Users/Clients", {headers: authHeader()})
     }
 
-    CreateExercise(name: string, description: string, sets: number, repetitions: number, time: string){
+    CreateExercise(name: string, description: string, sets: number, repetitions: number, time: string, personalTrainerId: number){
         const newExercise = <exercise>{
             name: name,
             description: description,
             sets: sets,
             repetitions: repetitions,
             time: time,
+            personalTrainerId: personalTrainerId,
         }
-        console.log(newExercise);
+
+        return axios.post(URL+"Exercises", newExercise, {headers: authHeader()}).then((response) => {
+            console.log(response.data);
+        }).catch(err => { if(err.request){ console.log(err.request) } if(err.response){ console.log(err.response)}})
     }
 }
 export default new DataService();

@@ -5,6 +5,7 @@ import { WorkoutProgram } from '../Models/WorkoutProgram';
 import WorkoutProgramComponent from './WorkoutProgram';
 import CreateUser from './CreateUser';
 import CreateWorkoutProgram from './CreateWorkoutProgram';
+import CreateExercise from './CreateExercise';
 
 function Dashboard() {
 
@@ -65,7 +66,6 @@ function Dashboard() {
                         <CreateUser/>
                         <CreateWorkoutProgram/>
                         <WorkoutProgramComponent/>
-                        
                 </div>
                 )}
             </div>

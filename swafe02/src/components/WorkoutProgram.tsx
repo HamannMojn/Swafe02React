@@ -7,6 +7,10 @@ import styles from '../Styles/dashboard.module.scss';
 import WorkoutDialog from './WorkoutDialog';
 import jwtDecode from 'jwt-decode';
 import { exercise } from '../Models/exercise';
+import { useNavigate } from "react-router-dom";
+
+
+
 
 function WorkoutProgramComponent() {
     const [user, setUser] = useState<User>();
@@ -15,6 +19,8 @@ function WorkoutProgramComponent() {
     const [workoutTitle, setWorkoutTitle] = useState('');
     const [workoutDescription, setWorkoutDescription] = useState('');
     const [exercises, setExercises] = useState<Array<exercise>>([]);
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         getData();
@@ -44,6 +50,10 @@ function WorkoutProgramComponent() {
         toggleModal();
     }
 
+    function Navigation(){
+        navigate('/createexercise')
+    }
+
     const listItems = exercises.map((d) => <tr><td>{d.name}</td> <td>{d.repetitions}</td> <td>{d.sets}</td><td>{d.time}</td></tr>)
 
 
@@ -64,7 +74,7 @@ function WorkoutProgramComponent() {
 
     return (
         <div style={{float:'left'}}>
-            <h4>WorkoutPrograms</h4>
+            <h4>WorkoutProgramss</h4>
             <ul>
                 {programs && programs.map((program) => (
                     <li className={styles.card} onClick={() => testFunction(program)} >
@@ -72,7 +82,8 @@ function WorkoutProgramComponent() {
                         <p>
                             {program.description}
                         </p>
-                        {/* {console.log(program.exercises)} */}
+                        <button className={styles.standardButton} onClick={() => Navigation()}>Add exercise</button>
+                        {console.log(program.exercises)}
                     </li>
                 ))}
             </ul>
