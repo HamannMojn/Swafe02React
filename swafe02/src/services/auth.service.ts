@@ -6,17 +6,17 @@ import { userInfo } from "../Models/userInfo";
 const URL = "https://afe2021fitness.azurewebsites.net/api/Users/";
 
 class AuthService {
-    login(email: string, password: string){
-        return axios
+    async login(email: string, password: string){
+        return await axios
         .post(URL + "login", {
             email, password
         })
         .then((response) => {
             const token = response.data.jwt;
             if(token) {
-                sessionStorage.setItem("user", token);
+                localStorage.setItem("user", token);
                 const info = jwt<string>(token);
-                sessionStorage.setItem("info", JSON.stringify(info));
+                localStorage.setItem("info", JSON.stringify(info));
             }
 
             
@@ -25,7 +25,7 @@ class AuthService {
     }
 
     logout(){
-        sessionStorage.removeItem("user");
+        localStorage.removeItem("user");
     }
 
     register(user: User){
@@ -33,7 +33,8 @@ class AuthService {
     }
 
     getCurrentUser(){
-        const info = <userInfo>JSON.parse(sessionStorage.getItem("info")!);
+        const info = <userInfo>JSON.parse(localStorage.getItem("info")!);
+        console.log(info);
         return info;
     }
 }

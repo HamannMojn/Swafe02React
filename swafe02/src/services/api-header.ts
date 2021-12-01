@@ -1,7 +1,5 @@
-import axios from "axios";
-
 export default function authHeader() {
-    const user = sessionStorage.getItem("user");
+    const user = localStorage.getItem("user");
 
     return { Authorization: 'Bearer ' + user }
 }

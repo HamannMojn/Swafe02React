@@ -4,13 +4,6 @@ import Login from './Login';
 import Dashboard from "./Dashboard";
 
 function App() {
-
-  const [user, setUser] = useState({name: "", email: ""})
-  const [error, setError] = useState(""); 
-
-  const LoginFunc = (details: any) => {
-    console.log(details)
-  }
   return (
     <Router>
       <Routes>

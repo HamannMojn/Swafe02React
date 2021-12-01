@@ -21,21 +21,21 @@ function WorkoutProgramComponent() {
     }, []);
     const [modalVisible, setModalVisible] = useState(false);
 
-    const getUserRole = () => {
-        const user = authService.getCurrentUser();
+    // const getUserRole = () => {
+    //     const user = authService.getCurrentUser();
 
-        switch (user.role) {
-            case "Client":
-                console.log(user.role);
-                break;
+    //     switch (user.role) {
+    //         case "Client":
+    //             console.log(user.role);
+    //             break;
 
-            case "PersonalTrainer":
-                console.log(user.role);
-                break;
-            default:
-                break;
-        }
-    }
+    //         case "PersonalTrainer":
+    //             console.log(user.role);
+    //             break;
+    //         default:
+    //             break;
+    //     }
+    // }
 
     const getData = () => {
         dataService.getWorkoutPrograms()

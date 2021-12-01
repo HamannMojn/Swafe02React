@@ -1,7 +1,7 @@
 export interface userInfo {
-    name: string;
-    role: string;
-    userId: string;
+    Name: string;
+    Role: string;
+    UserId: string;
     nbf: string;
     exp: string;
 }

@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import authService from '../services/auth.service';
 import styles from '../Styles/login.module.scss';
 
-
 export default function Login() {
 
     const {register, handleSubmit} = useForm();
