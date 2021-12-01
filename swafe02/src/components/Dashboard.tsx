@@ -63,8 +63,8 @@ function Dashboard() {
                     <div>
                         <CreateUser/>
                         <CreateWorkoutProgram/>
-                        <WorkoutProgramComponent/>
                         <ClientList/>
+                        <WorkoutProgramComponent/>
                 </div>
                 )}
             </div>

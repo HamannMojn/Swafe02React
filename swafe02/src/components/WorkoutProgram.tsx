@@ -73,7 +73,7 @@ function WorkoutProgramComponent() {
 
 
     return (
-        <div style={{float:'left'}}>
+        <div style={{clear:'both'}}>
             <h4>WorkoutProgramss</h4>
             <ul>
                 {programs && programs.map((program) => (

@@ -32,27 +32,27 @@ function CreateExercise(this: any){
 
             <form onSubmit={handleSubmit(onCreate)}>
                 <div>
-                    <input className={styles.inputField} placeholder="Name of exercise" {...register("name")}></input>
+                    <input required={true} className={styles.inputField} placeholder="Name of exercise" {...register("name")}></input>
                 </div>
                 <div>
-                    <input className={styles.inputField} placeholder="Description" {...register("description")}></input>
+                    <input required={true} className={styles.inputField} placeholder="Description" {...register("description")}></input>
                 </div>
                 <div>
-                    <input className={styles.inputField} placeholder="Number of sets" {...register("sets")}></input>
+                    <input required={true} className={styles.inputField} placeholder="Number of sets" {...register("sets")}></input>
                 </div>
                 <div>
-                    <input className={styles.inputField} placeholder="Number of reps" {...register("repetitions")}></input>
+                    <input required={true} className={styles.inputField} placeholder="Number of reps" {...register("repetitions")}></input>
                 </div>
                 <div>
-                    <input className={styles.inputField} placeholder="Input time" {...register("time")}></input>
+                    <input required={true} className={styles.inputField} placeholder="Input time" {...register("time")}></input>
                 </div>
                 <div>
-                    <input className={styles.inputField} placeholder ="Personal trainer id" {...register("personalTrainerId")}></input>
+                    <input required={true} className={styles.inputField} placeholder ="Personal trainer id" {...register("personalTrainerId")}></input>
                 </div>
                 <div>
                     <input className={styles.inputField} value={workoutId} disabled={true} {...register("workoutProgramId")}></input>
                 </div>
-                <input type="submit"></input>
+                <input className={styles.standardButton} type="submit"></input>
             </form>
         </div>
     )
