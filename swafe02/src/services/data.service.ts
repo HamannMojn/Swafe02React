@@ -63,7 +63,7 @@ class DataService {
         return await axios.get(URL + "Users/Clients", {headers: authHeader()})
     }
 
-    CreateExercise(name: string, description: string, sets: number, repetitions: number, time: string, personalTrainerId: number){
+    CreateExercise(name: string, description: string, sets: number, repetitions: number, time: string, personalTrainerId: number, workoutProgramId: number){
         const newExercise = <exercise>{
             name: name,
             description: description,
@@ -71,6 +71,7 @@ class DataService {
             repetitions: repetitions,
             time: time,
             personalTrainerId: personalTrainerId,
+            workoutProgramId: workoutProgramId,
         }
 
         return axios.post(URL+"Exercises", newExercise, {headers: authHeader()}).then((response) => {

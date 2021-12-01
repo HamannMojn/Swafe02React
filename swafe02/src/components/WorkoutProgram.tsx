@@ -50,8 +50,12 @@ function WorkoutProgramComponent() {
         toggleModal();
     }
 
-    function Navigation(){
-        navigate('/createexercise')
+    function Navigation(programId: number | null){
+        console.log(programId);
+        navigate('/createexercise', {state: {
+            workoutid: programId,
+        }
+        })
     }
 
     const listItems = exercises.map((d) => <tr><td>{d.name}</td> <td>{d.repetitions}</td> <td>{d.sets}</td><td>{d.time}</td></tr>)
@@ -82,7 +86,7 @@ function WorkoutProgramComponent() {
                         <p>
                             {program.description}
                         </p>
-                        <button className={styles.standardButton} onClick={() => Navigation()}>Add exercise</button>
+                        <button className={styles.standardButton} onClick={() => Navigation(program.workoutProgramId)}>Add exercise</button>
                         {console.log(program.exercises)}
                     </li>
                 ))}
