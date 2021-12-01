@@ -4,6 +4,8 @@ import WorkoutProgramComponent from './WorkoutProgram';
 import CreateUser from './CreateUser';
 import CreateWorkoutProgram from './CreateWorkoutProgram';
 import ClientList from './ClientList';
+import { useNavigate } from 'react-router-dom';
+import styles from '../Styles/dashboard.module.scss';
 
 function Dashboard() {
 
@@ -15,7 +17,7 @@ function Dashboard() {
 
     const [state, setState] = useState(initialState);
     const [user, setUser] = useState(() => authService.getCurrentUser().Role);
-
+    const navigate = useNavigate();
     useEffect(() => {
         if(user){
             setUser(()=> authService.getCurrentUser().Role);
@@ -44,9 +46,17 @@ function Dashboard() {
         }
     }, [user])
 
+    const logout = () => {
+        authService.logout();
+        navigate("/");
+    }
+
     return (
         <div className="list row">
             <div className="gridcontainer">
+                <div>
+                    <button className={styles.standardButton} onClick={() => logout()}>Logout</button>
+                </div>
                 {state.isClient &&(
                     <div>
                     <WorkoutProgramComponent/>
