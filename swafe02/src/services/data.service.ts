@@ -57,6 +57,17 @@ class DataService {
         // }).catch(err => { if(err.request){ console.log(err.request) } if(err.response){ console.log(err.response)}})
     }
 
+    CreateExercise(name: string, description: string, sets: number, repetitions: number, time: string){
+        const newExercise = <exercise>{
+            name: name,
+            description: description,
+            sets: sets,
+            repetitions: repetitions,
+            time: time,
+        }
+        console.log(newExercise);
+    }
+
     async getExercises() {
         return await axios.get(URL + "exercises", {headers: authHeader()});
     }

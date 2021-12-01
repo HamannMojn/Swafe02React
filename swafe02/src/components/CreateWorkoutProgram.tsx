@@ -2,19 +2,20 @@ import React, { useState, useEffect } from 'react'
 import { useForm } from 'react-hook-form';
 import dataService from '../services/data.service';
 import authService from '../services/auth.service';
-import {exercise} from '../Models/exercise';
+import { exercise } from '../Models/exercise';
 import { User } from '../Models/User';
+import styles from '../Styles/createWorkoutProgram.module.scss';
 
 function CreateWorkoutProgram(this: any) {
-    const {register, handleSubmit, reset} = useForm();
+    const { register, handleSubmit, reset } = useForm();
     const [user, setUser] = useState(() => authService.getCurrentUser());
     const [importedExercises, setImportedExercises] = useState<exercise[]>([]);
     const [importedClients, setImportedClients] = useState<User[]>([]);
     const [exercises, setExercises] = useState<exercise[]>([]);
     const [client, setClient] = useState<User>();
 
-    const onCreate = async (data: {name: string, description: string}) => {
-        if(client?.UserId != null){
+    const onCreate = async (data: { name: string, description: string }) => {
+        if (client?.UserId != null) {
             dataService.CreateWorkout(data.name, data.description, exercises, parseInt(user.UserId), client!.UserId);
         }
         reset();
@@ -34,66 +35,66 @@ function CreateWorkoutProgram(this: any) {
             console.log(response.data);
         })
     }
-    function handleChangeExercise(event: any){
+    function handleChangeExercise(event: any) {
         console.log(event.target.value);
         setExercises(oldArray => [...oldArray, importedExercises[event.target.value]]);
         console.log(exercises);
     }
-    function handleChangeClient(event: any){
+    function handleChangeClient(event: any) {
         console.log(event.target.value);
         setClient(importedClients[event.target.value]);
     }
 
-    
+    const listItems = exercises.map((exercise) => <tr className={styles.td}>
+    <td>{exercise.name}</td>
+    <td>Sets: {exercise.sets} </td>
+    <td>Repetitions: {exercise.repetitions} </td>
+    </tr>);
+
     return (
-        <div className="react-hooks-form">
-      <form onSubmit={handleSubmit(onCreate)}>
-        <div>
-          <label htmlFor="name">Name of workout program</label>
-          <input placeholder="WorkoutProgram" {...register("name")} />
-        </div>
+        <div className="react-hooks-form" style={{ float: 'right', marginRight: '15%' }}>
+            <h2>
+                Create workout program
+            </h2>
+            <form onSubmit={handleSubmit(onCreate)}>
+                <div>
+                    <input placeholder="Name of workout program" {...register("name")} className={styles.inputField}/>
+                </div>
 
-        <div>
-          <label htmlFor="description">Description</label>
-          <input placeholder="description" {...register("description")} />
-        </div>
-        <div>
-            <ul>
-                {exercises.map((exercise) => (
-                    <li key={exercise.exerciseId}>
-                        {exercise.name}
-                        <p>
-                            Sets: {exercise.sets}
-                            Repetitions: {exercise.repetitions}
-                        </p>
-                    </li>
-                ))}
-            </ul>
-        </div>
+                <div>
+                    <input placeholder="Description" {...register("description")} className={styles.inputField}/>
+                </div>
+                <div>
+                    <table>
+                        {listItems}
+                    </table>
+                </div>
 
-        <div>
-          <label htmlFor="exercises">Exercises</label>
-          <select onChange={(event) => handleChangeExercise(event)}>
-              {importedExercises.map((exercise, index) => (
-                  <option key={index} value={index}>{exercise.name}</option>
-              ))}
-          </select>
-        </div>
+                <div>
+                    <label htmlFor="exercises">Exercises</label>
+                    <br></br>
+                    <select onChange={(event) => handleChangeExercise(event)}>
+                        {importedExercises.map((exercise, index) => (
+                            <option key={index} value={index}>{exercise.name}</option>
+                        ))}
+                    </select>
+                </div>
 
-        <div>
-          <label htmlFor="ClientId">ClientId</label>
-          <select onChange={(event) => handleChangeClient(event)}>
-              {importedClients.map((Client, index) => (
-                  <option key={index} value={index}>{Client.firstName},{Client.lastName}</option>
-              ))}
-          </select>
+                <div>
+                    <label htmlFor="ClientId">ClientId</label>
+                    <br></br>
+                    <select onChange={(event) => handleChangeClient(event)}>
+                        {importedClients.map((Client, index) => (
+                            <option key={index} value={index}>{Client.firstName},{Client.lastName}</option>
+                        ))}
+                    </select>
+                </div>
+                <div>
+                    <button className={styles.standardButton} onClick={() => setExercises([])}>Reset</button>
+                </div>
+                <input className={styles.standardButton} type="submit" onClick={() => setExercises([])}/>
+            </form>
         </div>
-        <div>
-            <button onClick={() => setExercises([])}>Reset</button>
-        </div>
-        <input type="submit" />
-      </form>
-    </div>
     )
 }
 

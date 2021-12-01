@@ -65,9 +65,9 @@ function WorkoutProgramComponent() {
 
     let dialogContent: JSX.Element =
         <>
-            <h2>
+            <h3>
                 Program id: {currentWorkout}
-            </h2>
+            </h3>
             <h3>
                 Beskrivelse: {workoutDescription}
             </h3>
@@ -79,7 +79,7 @@ function WorkoutProgramComponent() {
 
 
     return (
-        <div>
+        <div style={{float:'left'}}>
             <h4>WorkoutPrograms</h4>
             <ul>
                 {programs && programs.map((program) => (
