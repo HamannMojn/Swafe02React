@@ -11,12 +11,12 @@ function CreateWorkoutProgram(this: any) {
     const [importedExercises, setImportedExercises] = useState<exercise[]>([]);
     const [importedClients, setImportedClients] = useState<User[]>([]);
     const [exercises, setExercises] = useState<exercise[]>([]);
-    const [client, setClient] = useState<User>();
+    const [client, setClient] = useState<number>();
 
     const onCreate = async (data: {name: string, description: string}) => {
-        if(client?.UserId != null){
-            dataService.CreateWorkout(data.name, data.description, exercises, parseInt(user.UserId), client!.UserId);
-        }
+        console.log(exercises);
+        exercises.forEach(x => x.exerciseId = 0);
+        dataService.CreateWorkout(data.name, data.description, exercises, user.UserId, client);
         reset();
     }
 
@@ -25,7 +25,7 @@ function CreateWorkoutProgram(this: any) {
     }, []);
 
     const getData = async () => {
-        await dataService.getExercises().then((response: any) => {
+         await dataService.getExercises().then((response: any) => {
             setImportedExercises(response.data);
             console.log(response.data);
         })
@@ -35,13 +35,12 @@ function CreateWorkoutProgram(this: any) {
         })
     }
     function handleChangeExercise(event: any){
-        console.log(event.target.value);
         setExercises(oldArray => [...oldArray, importedExercises[event.target.value]]);
-        console.log(exercises);
+        console.log(importedExercises[event.target.value])
     }
     function handleChangeClient(event: any){
         console.log(event.target.value);
-        setClient(importedClients[event.target.value]);
+        setClient(event.target.value);
     }
 
     
@@ -83,8 +82,8 @@ function CreateWorkoutProgram(this: any) {
         <div>
           <label htmlFor="ClientId">ClientId</label>
           <select onChange={(event) => handleChangeClient(event)}>
-              {importedClients.map((Client, index) => (
-                  <option key={index} value={index}>{Client.firstName},{Client.lastName}</option>
+              {importedClients.map((Client) => (
+                  <option value={Client.userId}>{Client.firstName} {Client.lastName}</option>
               ))}
           </select>
         </div>
