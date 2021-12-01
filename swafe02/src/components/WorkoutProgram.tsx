@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import authService from '../services/auth.service';
 import dataService from '../services/data.service';
 import { WorkoutProgram } from '../Models/WorkoutProgram';
-import { User } from '../Models/User';
 import styles from '../Styles/dashboard.module.scss';
 import WorkoutDialog from './WorkoutDialog';
-import jwtDecode from 'jwt-decode';
 import { exercise } from '../Models/exercise';
 import { useNavigate } from "react-router-dom";
 
@@ -13,7 +10,6 @@ import { useNavigate } from "react-router-dom";
 
 
 function WorkoutProgramComponent() {
-    const [user, setUser] = useState<User>();
     const [programs, setPrograms] = useState<Array<WorkoutProgram>>([]);
     const [currentWorkout, setCurrentWorkout] = useState<Array<WorkoutProgram>>([]);;
     const [workoutTitle, setWorkoutTitle] = useState('');

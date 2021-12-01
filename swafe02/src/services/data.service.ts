@@ -14,6 +14,9 @@ class DataService {
     async getExercises() {
         return await axios.get(URL + "exercises", {headers: authHeader()});
     }
+    async getClients() {
+        return await axios.get(URL + "Users/Clients", {headers: authHeader()});
+    }
 
     async createUser(
         firstname: string,
