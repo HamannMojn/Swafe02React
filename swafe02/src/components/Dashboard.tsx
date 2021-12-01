@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import authService from '../services/auth.service';
-
+import dataService from '../services/data.service';
+import { WorkoutProgram } from '../Models/WorkoutProgram';
 import WorkoutProgramComponent from './WorkoutProgram';
 import CreateUser from './CreateUser';
 import CreateWorkoutProgram from './CreateWorkoutProgram';
