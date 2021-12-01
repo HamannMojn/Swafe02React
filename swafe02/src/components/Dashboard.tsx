@@ -15,13 +15,14 @@ function Dashboard() {
     }
 
     const [state, setState] = useState(initialState);
-    const [user, setUser] = useState({});
+    const [user, setUser] = useState(() => authService.getCurrentUser().Role);
 
     useEffect(() => {
         if(user){
             setUser(()=> authService.getCurrentUser().Role);
             console.log(user);
         }
+
         
         console.log(user)
         if(user){
